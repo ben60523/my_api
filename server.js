@@ -29,22 +29,31 @@ app.use(function(req, res) {
 
 process.on('exit', () => {
     server.close()
+    mongoose.connection.close();
 })
 
 process.on('uncaughtException', () => {
     app.listen(port).close()
+    mongoose.connection.close();
+
 })
 
 process.on('unhandledRejection', () => {
     app.listen(port).close()
+    mongoose.connection.close();
+
 })
 
 process.on('SIGTERM', () => {
     app.listen(port).close()
+    mongoose.connection.close();
+
 })
 
 process.on('SIGINT', () => {
     app.listen(port).close()
+    mongoose.connection.close();
+
 })
 
 console.log("my api start on: " + port)

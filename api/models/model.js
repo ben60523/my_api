@@ -8,17 +8,27 @@ var lifeSchema = new Schema({
         type: String,
         required: 'Gimme ur fucking name!!'
     },
-    CreatedAt: {
+    createdAt: {
         type: Date,
         default: Date.now
     },
-    status: {
-        type: [{
-            type: String,
-            enum: ['poor', 'vary poor', 'Mayor Han']
-        }],
-        default: 'Mayor Han'
+    income: {
+        type: Boolean,
+        required: 'Don\'t be an asshole, Ok?'
+    },
+    type: {
+        type: String,
+        enum: ["eating", "drinking", "traffic", "coffe", "tobacco", "entertainment", "Daily_Commodities", "Phone", "Computer"],
+        required: 'Idiot!!'
+    },
+    amount: {
+        type: Number,
+        required: "Tell me how much you mutherfuker!"
+    },
+    detaile: {
+        type:String
     }
+
 })
 
 module.exports = mongoose.model('life', lifeSchema)

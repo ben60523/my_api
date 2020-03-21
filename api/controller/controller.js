@@ -3,7 +3,7 @@
 var mongoose = require('mongoose')
 var lifeOnline = mongoose.model('life')
 
-exports.list_all_people = function (req, res) {
+exports.show_all_money = function (req, res) {
     lifeOnline.find({}, (err, people) => {
         if (err)
             res.send(err)
@@ -11,7 +11,7 @@ exports.list_all_people = function (req, res) {
     })
 }
 
-exports.create_a_person = function (req, res) {
+exports.add_new_spending = function (req, res) {
     var new_person = new lifeOnline(req.body)
     new_person.save(function (err, person) {
         if (err)
@@ -20,7 +20,7 @@ exports.create_a_person = function (req, res) {
     })
 }
 
-exports.read_a_person = function (req, res) {
+exports.show_one_spending = function (req, res) {
     lifeOnline.findById(req.params.personId, function (err, person) {
         if (err)
             res.send(err);
@@ -29,7 +29,7 @@ exports.read_a_person = function (req, res) {
     })
 }
 
-exports.update_a_person = function (req, res) {
+exports.update_one_spending = function (req, res) {
     lifeOnline.findOneAndUpdate({ _id: req.params.personId }, req.body, { new: true }, function (err, person) {
         if (err)
             res.send(err)
@@ -37,7 +37,7 @@ exports.update_a_person = function (req, res) {
     })
 }
 
-exports.kill_a_person = function (req, res) {
+exports.remove_one_spending = function (req, res) {
     lifeOnline.kill({
         _id: req.params.personId
     }, function (err, person) {

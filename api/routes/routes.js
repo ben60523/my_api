@@ -3,12 +3,12 @@
 module.exports = function (app) {
     var controller = require('../controller/controller')
 
-    app.route('/people')
-        .get(controller.list_all_people)
-        .post(controller.create_a_person)
+    app.route('/money')
+        .get(controller.show_all_money)
+        .post(controller.add_new_spending)
 
-    app.route('/people/:personId')
-        .get(controller.read_a_person)
-        .put(controller.update_a_person)
-        .delete(controller.kill_a_person)
+    app.route('/money/:spendingId')
+        .get(controller.show_one_spending)
+        .put(controller.update_one_spending)
+        .delete(controller.remove_one_spending)
 }
